@@ -1,4 +1,4 @@
-export const arrayOfBoxes = [
+const arrayOfBoxes = [
     [
         { status: 'dead', j: 1, x: 1, id: 1 },
         { status: 'alive', j: 1, x: 2, id: 2 },
