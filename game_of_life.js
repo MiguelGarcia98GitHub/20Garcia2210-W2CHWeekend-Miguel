@@ -60,8 +60,6 @@ const showAllLinesInConsole = (arrayOfBoxes) => {
 };
 
 const checkForNeighbours = (box) => {
-    // example box: arrayOfBoxes[2][2]
-
     let numberOfNeighbours = 0;
 
     let cell1ToCheck;
@@ -75,94 +73,116 @@ const checkForNeighbours = (box) => {
 
     {
         for (let i = 0; i < arrayOfBoxes.length; i++) {
-            // OLD
+            if (box.j !== 1) {
+                if (
+                    (cell1ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id - 6
+                    ))
+                ) {
+                    cell1ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id - 6
+                    );
+                    if (cell1ToCheck.status === 'alive') {
+                        numberOfNeighbours++;
+                    }
+                }
 
-            if (
-                (cell1ToCheck = arrayOfBoxes[i].find(
-                    (x) => x.id === box.id - 6
-                ))
-            ) {
-                cell1ToCheck = arrayOfBoxes[i].find((x) => x.id === box.id - 6);
-                if (cell1ToCheck.status === 'alive') {
-                    numberOfNeighbours++;
+                if (
+                    (cell2ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id - 5
+                    ))
+                ) {
+                    cell2ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id - 5
+                    );
+                    if (cell2ToCheck.status === 'alive') {
+                        numberOfNeighbours++;
+                    }
+                }
+
+                if (
+                    (cell3ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id - 4
+                    )) &&
+                    box.id % 5 !== 0
+                ) {
+                    cell3ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id - 4
+                    );
+                    if (cell3ToCheck.status === 'alive') {
+                        numberOfNeighbours++;
+                    }
                 }
             }
 
-            if (
-                (cell2ToCheck = arrayOfBoxes[i].find(
-                    (x) => x.id === box.id - 5
-                ))
-            ) {
-                cell2ToCheck = arrayOfBoxes[i].find((x) => x.id === box.id - 5);
-                if (cell2ToCheck.status === 'alive') {
-                    numberOfNeighbours++;
+            if (box.x !== 1) {
+                if (
+                    (cell4ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id - 1
+                    ))
+                ) {
+                    cell4ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id - 1
+                    );
+                    if (cell4ToCheck.status === 'alive') {
+                        numberOfNeighbours++;
+                    }
                 }
             }
 
-            if (
-                (cell3ToCheck = arrayOfBoxes[i].find(
-                    (x) => x.id === box.id - 4
-                )) &&
-                box.id % 5 !== 0
-            ) {
-                cell3ToCheck = arrayOfBoxes[i].find((x) => x.id === box.id - 4);
-                if (cell3ToCheck.status === 'alive') {
-                    numberOfNeighbours++;
+            if (box.x !== 5) {
+                if (
+                    (cell5ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id + 1
+                    ))
+                ) {
+                    cell5ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id + 1
+                    );
+                    if (cell5ToCheck.status === 'alive') {
+                        numberOfNeighbours++;
+                    }
                 }
             }
 
-            if (
-                (cell4ToCheck = arrayOfBoxes[i].find(
-                    (x) => x.id === box.id - 1
-                ))
-            ) {
-                cell4ToCheck = arrayOfBoxes[i].find((x) => x.id === box.id - 1);
-                if (cell4ToCheck.status === 'alive') {
-                    numberOfNeighbours++;
+            if (box.j !== 5) {
+                if (
+                    (cell6ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id + 4
+                    ))
+                ) {
+                    cell6ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id + 4
+                    );
+                    if (cell6ToCheck.status === 'alive') {
+                        numberOfNeighbours++;
+                    }
                 }
-            }
 
-            if (
-                (cell5ToCheck = arrayOfBoxes[i].find(
-                    (x) => x.id === box.id + 1
-                ))
-            ) {
-                cell5ToCheck = arrayOfBoxes[i].find((x) => x.id === box.id + 1);
-                if (cell5ToCheck.status === 'alive') {
-                    numberOfNeighbours++;
+                if (
+                    (cell7ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id + 5
+                    ))
+                ) {
+                    cell7ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id + 5
+                    );
+                    if (cell7ToCheck.status === 'alive') {
+                        numberOfNeighbours++;
+                    }
                 }
-            }
 
-            if (
-                (cell6ToCheck = arrayOfBoxes[i].find(
-                    (x) => x.id === box.id + 4
-                ))
-            ) {
-                cell6ToCheck = arrayOfBoxes[i].find((x) => x.id === box.id + 4);
-                if (cell6ToCheck.status === 'alive') {
-                    numberOfNeighbours++;
-                }
-            }
-
-            if (
-                (cell7ToCheck = arrayOfBoxes[i].find(
-                    (x) => x.id === box.id + 5
-                ))
-            ) {
-                cell7ToCheck = arrayOfBoxes[i].find((x) => x.id === box.id + 5);
-                if (cell7ToCheck.status === 'alive') {
-                    numberOfNeighbours++;
-                }
-            }
-
-            if (
-                (cell8ToCheck = arrayOfBoxes[i].find(
-                    (x) => x.id === box.id + 6
-                ))
-            ) {
-                cell8ToCheck = arrayOfBoxes[i].find((x) => x.id === box.id + 6);
-                if (cell8ToCheck.status === 'alive') {
-                    numberOfNeighbours++;
+                if (
+                    (cell8ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id + 6
+                    ))
+                ) {
+                    cell8ToCheck = arrayOfBoxes[i].find(
+                        (x) => x.id === box.id + 6
+                    );
+                    if (cell8ToCheck.status === 'alive') {
+                        numberOfNeighbours++;
+                    }
                 }
             }
         }
@@ -183,18 +203,25 @@ const checkForNeighbours = (box) => {
     }
 };
 
-const checkAllForNeighbours = () => {
+const checkAllForNeighbours = (currentGeneration) => {
     for (let i = 0; i < arrayOfBoxes.length; i++) {
         for (let z = 0; z < arrayOfBoxes[i].length; z++) {
             arrayOfBoxes[i][z].status = checkForNeighbours(arrayOfBoxes[i][z]);
         }
     }
     {
-        console.log('#####');
+        console.log(`Generation number ${currentGeneration}`);
         showAllLinesInConsole(arrayOfBoxes);
     }
 };
 
-setInterval(() => {
-    checkAllForNeighbours();
-}, 1000);
+const startGame = () => {
+    let currentGeneration = 0;
+
+    setInterval(() => {
+        currentGeneration++;
+        checkAllForNeighbours(currentGeneration);
+    }, 1000);
+};
+
+startGame();
