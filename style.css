@@ -1,0 +1,18 @@
+main {
+    background-color: grey;
+    width: 800px;
+    height: 800px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.line {
+    background-color: cadetblue;
+}
+
+.item {
+    width: 100px;
+    background-color: red;
+    height: 100px;
+    margin: 10px;
+}
